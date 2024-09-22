@@ -1,0 +1,6 @@
+pip install pygame pytmx
+
+python -m pygame.examples.aliens  # Test if pygame is installed correctly
+
+python -c "import pytmx; print('pytmx is installed')"  # Check if pytmx is installed
+
