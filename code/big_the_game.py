@@ -23,8 +23,10 @@ city = pygame.image.load('../Graphics/ayleen/cityFall.png').convert()
 
 zoltar_surface = pygame.image.load('../Graphics/ayleen/zoltar.png').convert_alpha()
 
-kid_surface = pygame.image.load('../Graphics/ayleen/Truck.webp').convert_alpha()
-kid_rect = kid_surface.get_rect(midbottom = (965,430))
+truck_start_x_pos = 960
+truck_end_x_pos = -80
+truck_surface = pygame.image.load('../Graphics/ayleen/Truck.webp').convert_alpha()
+truck_rect = truck_surface.get_rect(midbottom = (truck_start_x_pos,430))
 
 josh_surface = pygame.image.load('../Graphics/ayleen/Josh.png').convert_alpha()
 josh_rect = josh_surface.get_rect(midbottom = (100,430))
@@ -47,7 +49,7 @@ while True:
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
-                kid_rect.x = 965
+                truck_rect.x = truck_start_x_pos
                 
 
 
@@ -55,10 +57,10 @@ while True:
         #screen.blit(ground_surface,(0,0))
         screen.blit(city, (0,0))
 
-        #kid
-        if kid_rect.x <= -15: kid_rect.x = 960
-        screen.blit(kid_surface,kid_rect)  #horizontal, vertical (greater # is down)
-        kid_rect.x -= 4
+        #truck
+        if truck_rect.x <= truck_end_x_pos: truck_rect.x = truck_start_x_pos
+        screen.blit(truck_surface,truck_rect)  #horizontal (less is left, more is right), vertical (less is up, more is down)
+        truck_rect.x -= 4
 
         #Josh
         josh_gravity += 1
@@ -67,7 +69,7 @@ while True:
         screen.blit(josh_surface,josh_rect) 
 
         #collsion
-        if kid_rect.colliderect(josh_rect):
+        if truck_rect.colliderect(josh_rect):
             game_active = False
     else:
         screen.blit(city, (0,0))
