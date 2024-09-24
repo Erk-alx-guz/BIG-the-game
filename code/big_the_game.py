@@ -1,9 +1,6 @@
 import pygame, sys
 from pytmx.util_pygame import load_pygame
 
-
-
-
 pygame.init()
 screen = pygame.display.set_mode((960,450))
 clock = pygame.time.Clock()
@@ -32,11 +29,8 @@ josh_surface = pygame.image.load('../Graphics/ayleen/Josh.png').convert_alpha()
 josh_rect = josh_surface.get_rect(midbottom = (100,430))
 josh_gravity = 0
 
-
-
-
-
 while True:
+    #   We go in the for loop whenever there is an event which could be clicking the mouse buttons or keyboard keys 
     for event in pygame.event.get():
         if event.type == pygame. QUIT:
             pygame.quit()
@@ -50,33 +44,29 @@ while True:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
                 truck_rect.x = truck_start_x_pos
-                
 
-
-    if game_active:
-        #screen.blit(ground_surface,(0,0))
+    if game_active:   # We are in playing mode
         screen.blit(city, (0,0))
 
-        #truck
+        #   truck
         if truck_rect.x <= truck_end_x_pos: truck_rect.x = truck_start_x_pos
-        screen.blit(truck_surface,truck_rect)  #horizontal (less is left, more is right), vertical (less is up, more is down)
+        screen.blit(truck_surface,truck_rect)  #    horizontal (less is left, more is right), vertical (less is up, more is down)
         truck_rect.x -= 4
 
-        #Josh
+        #   Josh
         josh_gravity += 1
         josh_rect.y += josh_gravity
         if josh_rect.bottom >= 430: josh_rect.bottom = 430
         screen.blit(josh_surface,josh_rect) 
 
-        #collsion
-        if truck_rect.colliderect(josh_rect):
+        #   collsion
+        if truck_rect.colliderect(josh_rect):   #   truck collision with josh
             game_active = False
-    else:
+    else:           #   We are not in playing mode. 
+                    #   We are either in game over screen, menu screen, pause screen
         screen.blit(city, (0,0))
         screen.blit(frosted_surface, (0, 0)) 
         screen.blit(game_name,game_name_rect)
-
-
 
     pygame.display. update()
     clock.tick(60)
