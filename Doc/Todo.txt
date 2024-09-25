@@ -1,0 +1,24 @@
+We need a pause screen
+    the screen needs 
+    a quit button 
+    a resume button
+    a restart button
+
+text class
+
+character class
+
+Maybe a screen class
+
+score keeper or timer
+
+perhaps josh has three lives
+
+have josh be able to clear the military vehicles 
+
+add more vehicles tank, helicopter
+
+Add logic to end the game when player completes run
+    show zoltar at the end of the run
+
+Create and add Carnival map
