@@ -12,6 +12,10 @@ pygame.init()
 screen = pygame.display.set_mode((960,450))
 clock = pygame.time.Clock()
 
+icon = pygame.image.load('../Graphics/ayleen/zoltar.png')
+pygame.display.set_icon(icon)
+pygame.display.set_caption("Big The Game")
+
 game_active = False
 
 game_title_font = pygame.font.Font('../Graphics/Font/Pixeltype.ttf', 65)
