@@ -24,11 +24,6 @@ game_name_rect = game_name.get_rect(center = (500,80))
 
 play_button_font = pygame.font.Font('../Graphics/Font/Pixeltype.ttf', 50) 
 play_button = Button(375, 200, 240, 80, "Play", play_button_font, BLACK, WHITE, 100, 200)
-    
-window_size = (960,450)
-frosted_surface = pygame.Surface(window_size, pygame.SRCALPHA)
-frosted_color = (255, 255, 255, 180)  # White with some transparency
-frosted_surface.fill(frosted_color)
 
 city = pygame.image.load('../Graphics/ayleen/cityFall.png').convert()
 
@@ -80,7 +75,6 @@ while True:
     else:           #   We are not in playing mode. 
                     #   We are either in game over screen, menu screen, pause screen
         screen.blit(city, (0,0))
-        #screen.blit(frosted_surface, (0, 0)) 
         screen.blit(game_name,game_name_rect)
         play_button.draw(screen)
 
